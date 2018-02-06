@@ -6,7 +6,7 @@
 
     <div class="jumbotron">
       <h3>New Post</h3>
-      <%= render 'form', post: @new_post %>
+      <%= render 'form', post: @post %>
     </div>
 
   <div class="jumbotron">
@@ -14,9 +14,9 @@
     <% @posts.each do |post| %>
       <div class="card w-100">
         <div class="card-body">
-          <h5 class="card-title"><%= post.user_id %></h5>
-          <h6 class="card-subtitle mb-2 text-muted"><%= post.created_at.to_date %></h6>
-          <p class="card-text"><%= post.content %></p>
+          <h5 class="card-title"><%= post.content %></h5>
+          <h6 class="card-subtitle mb-2 text-muted"><%= post.user_id %></h6>
+          <p class="card-text"><%= post.created_at.to_date %></p>
           <%= form_for(post, method: :delete) do |form| %>
             <p class="field">
               <%= form.text_field :password, :value => "Enter Password To Delete The Post", class: "passwordinput" %> <%= form.submit "Delete"%>
