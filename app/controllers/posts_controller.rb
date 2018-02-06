@@ -15,10 +15,10 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to root_path, notice: 'Post was successfully created.' }
+        format.html { redirect_to root_path, flash: { success: 'Post was successfully created.' } }
         format.json { render :show, status: :created, location: @post }
       else
-        format.html { redirect_to root_path, notice: @post.errors }
+        format.html { redirect_to root_path, flash: { error: @post.errors.full_messages.join(', ') } }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
@@ -31,12 +31,12 @@ class PostsController < ApplicationController
     if @post.password == password_confirmation
       @post.destroy
       respond_to do |format|
-        format.html { redirect_to root_path, notice: 'Post was successfully destroyed.' }
+        format.html { redirect_to root_path, flash: { success: 'Post was successfully deleted.' } }
         format.json { head :no_content }
       end
     else
       respond_to do |format|
-        format.html { redirect_to root_path, notice: 'Incorrect Password.' }
+        format.html { redirect_to root_path, flash: { error: 'Incorrect password.' } }
         format.json { head :no_content }
       end
     end

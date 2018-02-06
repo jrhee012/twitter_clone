@@ -1,5 +1,10 @@
 <div class="container-fluid">
-  <p id="notice"><%= notice %></p>
+  <!-- <p id="notice"><%= notice %></p> -->
+  <% flash.each do |key, value| %>
+      <div class="<%= flash_class(key) %>">
+        <%= value %>
+      </div>
+  <% end %>
 
   <h1>Posts</h1>
 
