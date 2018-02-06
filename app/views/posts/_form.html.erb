@@ -1,0 +1,6 @@
+<%= bootstrap_form_with(model: post, local: true) do |f| %>
+  <%= f.text_field :user_id %>
+  <%= f.password_field :password %>
+  <%= f.text_area :content %>
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>

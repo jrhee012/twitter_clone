@@ -1,0 +1,29 @@
+<div class="container-fluid">
+  <p id="notice"><%= notice %></p>
+
+  <h1>Posts</h1>
+
+
+    <div class="jumbotron">
+      <h3>New Post</h3>
+      <%= render 'form', post: @new_post %>
+    </div>
+
+  <div class="jumbotron">
+    <h3>Past Posts</h3>
+    <% @posts.each do |post| %>
+      <div class="card w-100">
+        <div class="card-body">
+          <h5 class="card-title"><%= post.user_id %></h5>
+          <h6 class="card-subtitle mb-2 text-muted"><%= post.created_at.to_date %></h6>
+          <p class="card-text"><%= post.content %></p>
+          <%= form_for(post, method: :delete) do |form| %>
+            <p class="field">
+              <%= form.text_field :password, :value => "Enter Password To Delete The Post", class: "passwordinput" %> <%= form.submit "Delete"%>
+            </p>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
